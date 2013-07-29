@@ -1,0 +1,41 @@
+<h1>New Movie</h1>
+
+
+<%= form_tag(movies_url, method: 'post') do %>
+
+
+  <div>
+    <%= label_tag :title %><br />
+    <%= text_field_tag :title %>
+  </div>
+
+  <div>
+    <%= label_tag :year %><br />
+    <%= number_field_tag :year %>
+  </div>
+
+  <div>
+    <%= label_tag :duration %><br />
+    <%= number_field_tag :duration %>
+  </div>
+
+  <div>
+    <%= label_tag :description %><br />
+    <%= text_area_tag :description %>
+  </div>
+
+  <div>
+    <%= label_tag :image_url %><br />
+    <%= text_field_tag :image_url %>
+  </div>
+
+  <div>
+    <%= label_tag :director_id %><br />
+    <%= number_field_tag :director_id %>
+  </div>
+
+
+  <div>
+    <%= submit_tag "Create Movie" %>
+  </div>
+<% end %>
