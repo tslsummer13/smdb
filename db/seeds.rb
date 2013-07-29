@@ -36,3 +36,33 @@ movie_hashes.each do |movie_hash|
   m.save
 end
 puts "There are now #{Movie.count} rows in the movies table."
+
+actors_file = Rails.root.join('lib', 'seeds', 'actors.json').to_s
+actor_hashes = JSON.parse(open(actors_file).read)
+
+Actor.destroy_all
+actor_hashes.each do |actor_hash|
+  a = Actor.new
+  a.name = actor_hash["name"]
+  a.image_url = actor_hash["image_url"]
+  a.bio = actor_hash["bio"]
+  a.dob = actor_hash["dob"]
+  a.save
+end
+puts "There are now #{Actor.count} rows in the actors table."
+
+
+roles_file = Rails.root.join('lib', 'seeds', 'roles.json').to_s
+role_hashes = JSON.parse(open(roles_file).read)
+
+Role.destroy_all
+role_hashes.each do |role_hash|
+  r = Role.new
+  r.character_name = role_hash["character_name"]
+  m = Movie.find_by_title(role_hash["movie"])
+  a = Actor.find_by_name(role_hash["actor"])
+  r.movie_id = m.id if m.present?
+  r.actor_id = a.id if a.present?
+  r.save
+end
+puts "There are now #{Role.count} rows in the roles table."
