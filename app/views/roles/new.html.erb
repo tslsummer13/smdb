@@ -1,0 +1,21 @@
+<h1>New Role</h1>
+
+
+<%= form_tag(roles_url, method: 'post') do %>
+
+
+  <div>
+    <%= label_tag :character_name %><br />
+    <%= text_field_tag :character_name %>
+  </div>
+
+  <div>
+    <%= label_tag :movie_id %><br />
+    <%= select_tag :movie_id, options_from_collection_for_select(Movie.all, :id, :title) %>
+  </div>
+
+
+  <div>
+    <%= submit_tag "Create Role" %>
+  </div>
+<% end %>

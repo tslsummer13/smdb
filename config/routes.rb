@@ -1,4 +1,21 @@
 Smdb::Application.routes.draw do
+  # Routes for the Role resource:
+  # CREATE
+  get '/roles/new', controller: 'roles', action: 'new', as: 'new_role'
+  post '/roles', controller: 'roles', action: 'create'
+
+  # READ
+  get '/roles', controller: 'roles', action: 'index'
+  get '/roles/:id', controller: 'roles', action: 'show', as: 'role'
+
+  # UPDATE
+  get '/roles/:id/edit', controller: 'roles', action: 'edit', as: 'edit_role'
+  patch '/roles/:id', controller: 'roles', action: 'update'
+
+  # DELETE
+  delete '/roles/:id', controller: 'roles', action: 'destroy'
+  #------------------------------
+
   # Routes for the Movie resource:
   # CREATE
   get '/movies/new', controller: 'movies', action: 'new', as: 'new_movie'
