@@ -20,4 +20,13 @@
   <%= @director.bio %>
 </p>
 
+<p>
+  <b>Filmography:</b>
+  <ul>
+    <% @director.movies.each do |movie| %>
+      <li><%= movie.title %> (<%= movie.year %>)</li>
+    <% end %>
+  </ul>
+</p>
+
 
