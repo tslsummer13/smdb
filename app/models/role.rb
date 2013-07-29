@@ -1,5 +1,5 @@
 class Role < ActiveRecord::Base
   def movie
-    # Make this work. Refer to Movie#director
+    return Movie.find_by_id(self.movie_id)
   end
 end
