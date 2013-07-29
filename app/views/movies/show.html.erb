@@ -21,13 +21,13 @@
 </p>
 
 <p>
-  <b>Image url:</b>
-  <%= @movie.image_url %>
+  <b>Image:</b>
+  <%= image_tag @movie.image_url %>
 </p>
 
 <p>
   <b>Director:</b>
-  <%= @movie.director.name %>
+  <%= link_to @movie.director.name, director_url(@movie.director.id) %>
 </p>
 
 

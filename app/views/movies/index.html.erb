@@ -9,7 +9,7 @@
       <th>Year</th>
       <th>Duration</th>
       <th>Description</th>
-      <th>Image url</th>
+      <th>Image</th>
       <th>Director</th>
       <th></th>
       <th></th>
@@ -20,12 +20,12 @@
   <tbody>
   <% @movies.each do |movie| %>
     <tr>
-      <td><%= movie.title %></td>
+      <td><%= link_to movie.title, movie_url(movie.id) %></td>
       <td><%= movie.year %></td>
       <td><%= movie.duration %></td>
-      <td><%= movie.description %></td>
-      <td><%= movie.image_url %></td>
-      <td><%= movie.director.name %></td>
+      <td><%= truncate movie.description %></td>
+      <td><%= image_tag movie.image_url, width: 100 %></td>
+      <td><%= link_to movie.director.name, director_url(movie.director.id) %></td>
 
       <td><%= link_to 'Show', movie_url(movie) %></td>
       <td><%= link_to 'Edit', edit_movie_url(movie) %></td>
