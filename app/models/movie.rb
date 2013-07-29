@@ -1,9 +1,5 @@
 class Movie < ActiveRecord::Base
-  def director
-    return Director.find_by_id(self.director_id)
-  end
+  # belongs to director
 
-  def roles
-    return Role.where(:movie_id => self.id)
-  end
+  # has many roles
 end
