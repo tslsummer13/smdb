@@ -10,10 +10,15 @@
 
   <div>
     <%= label_tag :movie_id %><br />
-    <%= number_field_tag :movie_id, @role.movie_id %>
+    <%= select_tag :movie_id, options_from_collection_for_select(Movie.all, :id, :title) %>
   </div>
 
-  
+  <div>
+    <%= label_tag :actor_id %><br />
+    <%= select_tag :actor_id, options_from_collection_for_select(Actor.all, :id, :name) %>
+  </div>
+
+
   <div>
     <%= submit_tag "Update Role" %>
   </div>
