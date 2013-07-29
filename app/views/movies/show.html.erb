@@ -30,4 +30,22 @@
   <%= link_to @movie.director.name, director_url(@movie.director.id) %>
 </p>
 
+<p>
+  <b>Characters:</b>
+  <ul>
+    <% @movie.roles.each do |role| %>
+      <li><%= role.character_name %></li>
+    <% end %>
+  </ul>
+</p>
+
+
+
+
+
+
+
+
+
+
 
