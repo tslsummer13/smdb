@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130729160843) do
+ActiveRecord::Schema.define(version: 20130729160943) do
 
   create_table "actors", force: true do |t|
     t.string "name"
@@ -39,6 +39,7 @@ ActiveRecord::Schema.define(version: 20130729160843) do
   create_table "roles", force: true do |t|
     t.string  "character_name"
     t.integer "movie_id"
+    t.integer "actor_id"
   end
 
 end
