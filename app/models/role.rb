@@ -4,6 +4,6 @@ class Role < ActiveRecord::Base
   end
 
   def actor
-    # Make this work. It should return the actor that this role belongs to.
+    return Actor.find_by_id(self.actor_id)
   end
 end

@@ -16,7 +16,8 @@ class RolesController < ApplicationController
     @role = Role.new
     @role.character_name = params[:character_name]
     @role.movie_id = params[:movie_id]
-    
+    @role.actor_id = params[:actor_id]
+
     if @role.save
       redirect_to roles_url
     else
@@ -32,7 +33,8 @@ class RolesController < ApplicationController
     @role = Role.find_by_id(params[:id])
     @role.character_name = params[:character_name]
     @role.movie_id = params[:movie_id]
-    
+    @role.actor_id = params[:actor_id]
+
     if @role.save
       redirect_to roles_url
     else
