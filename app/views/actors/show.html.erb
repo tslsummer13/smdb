@@ -16,8 +16,17 @@
 </p>
 
 <p>
-  <b>Image url:</b>
-  <%= @actor.image_url %>
+  <b>Image:</b>
+  <%= image_tag @actor.image_url %>
+</p>
+
+<p>
+  <b>Roles:</b>
+  <ul>
+    <% @actor.roles.each do |role| %>
+      <li><%= role.character_name %></li>
+    <% end %>
+  </ul>
 </p>
 
 

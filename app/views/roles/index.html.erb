@@ -7,6 +7,7 @@
     <tr>
       <th>Character name</th>
       <th>Movie</th>
+      <th>Actor</th>
       <th></th>
       <th></th>
       <th></th>
@@ -18,6 +19,7 @@
     <tr>
       <td><%= role.character_name %></td>
       <td><%= role.movie.title %></td>
+      <td><%= role.actor.name %></td>
 
       <td><%= link_to 'Show', role_url(role) %></td>
       <td><%= link_to 'Edit', edit_role_url(role) %></td>
