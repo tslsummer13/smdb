@@ -4,4 +4,6 @@ class Director < ActiveRecord::Base
   #   return Movie.where(:director_id => self.id)
   # end
   has_many :movies
+
+  has_many :actors, :through => :movies
 end

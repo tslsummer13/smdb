@@ -4,4 +4,5 @@ class Actor < ActiveRecord::Base
   #   return Role.where(:actor_id => self.id)
   # end
   has_many :roles
+  has_many :movies, :through => :roles
 end

@@ -24,9 +24,23 @@
   <b>Filmography:</b>
   <ul>
     <% @director.movies.each do |movie| %>
-      <li><%= movie.title %> (<%= movie.year %>)</li>
+      <li>
+        <%= movie.title %> (<%= movie.year %>)
+        <ul>
+          <% movie.actors.each do |actor| %>
+            <li><%= actor.name %></li>
+          <% end %>
+        </ul>
+      </li>
     <% end %>
   </ul>
 </p>
 
-
+<p>
+  <b>Worked with:</b>
+  <ul>
+    <% @director.actors.each do |actor| %>
+      <li><%= actor.name %></li>
+    <% end %>
+  </ul>
+</p>
