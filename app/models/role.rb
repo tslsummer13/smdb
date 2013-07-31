@@ -9,5 +9,5 @@ class Role < ActiveRecord::Base
   # def actor
   #   return Actor.find_by_id(self.actor_id)
   # end
-  belongs_to :role
+  belongs_to :actor
 end

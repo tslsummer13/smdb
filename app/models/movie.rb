@@ -17,4 +17,16 @@ class Movie < ActiveRecord::Base
   #   return Role.where(:movie_id => self.id)
   # end
   has_many :roles
+
+  has_many :actors, :through => :roles
+
+  # def actors
+  #   my_actors = []
+
+  #   self.roles.each do |role|
+  #     my_actors << role.actor
+  #   end
+
+  #   return my_actors
+  # end
 end

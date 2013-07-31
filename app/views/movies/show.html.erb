@@ -31,10 +31,10 @@
 </p>
 
 <p>
-  <b>Characters:</b>
+  <b>Cast:</b>
   <ul>
-    <% @movie.roles.each do |role| %>
-      <li><%= role.character_name %></li>
+    <% @movie.actors.each do |actor| %>
+      <li><%= actor.name %></li>
     <% end %>
   </ul>
 </p>
