@@ -1,5 +1,7 @@
 <h1>Movies <%= link_to '<i class="icon-plus"></i>&nbsp;&nbsp;&nbsp;<i class="icon-film"></i>'.html_safe, new_movie_url, :class => "btn btn-primary btn-large" %></h1>
 
+<%= paginate @movies %>
+
 <table class="table table-striped table-hover">
   <thead>
     <tr>

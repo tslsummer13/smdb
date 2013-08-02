@@ -1,7 +1,7 @@
 class MoviesController < ApplicationController
 
   def index
-    @movies = Movie.order("title").offset(10).limit(10)
+    @movies = Movie.order("title").page(params[:page]).per(10)
   end
 
   def show
