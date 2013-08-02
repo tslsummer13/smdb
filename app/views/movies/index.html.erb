@@ -27,9 +27,9 @@
       <td><%= image_tag movie.image_url, width: 100 %></td>
       <td><%= link_to movie.director.name, director_url(movie.director.id) %></td>
 
-      <td><%= link_to 'Show', movie_url(movie) %></td>
-      <td><%= link_to 'Edit', edit_movie_url(movie) %></td>
-      <td><%= link_to 'Destroy', movie_url(movie), method: 'delete', data: { confirm: "Do you really want to delete this movie?" } %></td>
+      <td><%= link_to 'Show', movie_url(movie), :class => "btn btn-inverse" %></td>
+      <td><%= link_to 'Edit', edit_movie_url(movie), :class => "btn btn-warning" %></td>
+      <td><%= link_to 'Destroy', movie_url(movie), :class => "btn btn-danger", method: 'delete', data: { confirm: "Do you really want to delete this movie?" } %></td>
 
     </tr>
   <% end %>
