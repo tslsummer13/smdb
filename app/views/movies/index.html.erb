@@ -13,6 +13,7 @@
       <th>Director</th>
       <th></th>
       <th></th>
+      <th></th>
     </tr>
   </thead>
 
@@ -26,6 +27,16 @@
       <td><%= link_to (image_tag movie.image_url, width: 100), movie_url(movie.id) %></td>
       <td><%= link_to movie.director.name, director_url(movie.director.id) %></td>
 
+      <td>
+        <%= form_tag votes_url, :class => "form-horizontal" do %>
+          <%= hidden_field_tag :movie_id, movie.id %>
+
+          <%= label_tag :user_id %>
+          <%= select_tag :user_id, options_from_collection_for_select(User.all, :id, :name) %>
+
+          <%= submit_tag "Create Vote", :class => "btn btn-success" %>
+        <% end %>
+      </td>
       <td><%= link_to '<i class="icon-edit"></i>'.html_safe, edit_movie_url(movie), :class => "btn btn-warning" %></td>
       <td><%= link_to '<i class="icon-trash"></i>'.html_safe, movie_url(movie), :class => "btn btn-danger", method: 'delete', data: { confirm: "Do you really want to delete this movie?" } %></td>
 
