@@ -31,7 +31,7 @@
 
   <div>
     <%= label_tag :director_id %><br />
-    <%= number_field_tag :director_id %>
+    <%= select_tag :director_id, options_from_collection_for_select(Director.all, :id, :name) %>
   </div>
 
 
