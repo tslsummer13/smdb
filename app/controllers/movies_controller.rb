@@ -1,7 +1,8 @@
 class MoviesController < ApplicationController
 
   def index
-    @movies = Movie.all
+    @page_number = params[:page].to_i
+    @movies = Movie.order("title").offset((@page_number - 1) * 10).limit(10)
   end
 
   def show
@@ -20,7 +21,7 @@ class MoviesController < ApplicationController
     @movie.description = params[:description]
     @movie.image_url = params[:image_url]
     @movie.director_id = params[:director_id]
-    
+
     if @movie.save
       redirect_to movies_url
     else
@@ -40,7 +41,7 @@ class MoviesController < ApplicationController
     @movie.description = params[:description]
     @movie.image_url = params[:image_url]
     @movie.director_id = params[:director_id]
-    
+
     if @movie.save
       redirect_to movies_url
     else
