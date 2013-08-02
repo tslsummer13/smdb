@@ -1,4 +1,38 @@
 Smdb::Application.routes.draw do
+  # Routes for the Vote resource:
+  # CREATE
+  get '/votes/new', controller: 'votes', action: 'new', as: 'new_vote'
+  post '/votes', controller: 'votes', action: 'create'
+
+  # READ
+  get '/votes', controller: 'votes', action: 'index'
+  get '/votes/:id', controller: 'votes', action: 'show', as: 'vote'
+
+  # UPDATE
+  get '/votes/:id/edit', controller: 'votes', action: 'edit', as: 'edit_vote'
+  patch '/votes/:id', controller: 'votes', action: 'update'
+
+  # DELETE
+  delete '/votes/:id', controller: 'votes', action: 'destroy'
+  #------------------------------
+
+  # Routes for the User resource:
+  # CREATE
+  get '/users/new', controller: 'users', action: 'new', as: 'new_user'
+  post '/users', controller: 'users', action: 'create'
+
+  # READ
+  get '/users', controller: 'users', action: 'index'
+  get '/users/:id', controller: 'users', action: 'show', as: 'user'
+
+  # UPDATE
+  get '/users/:id/edit', controller: 'users', action: 'edit', as: 'edit_user'
+  patch '/users/:id', controller: 'users', action: 'update'
+
+  # DELETE
+  delete '/users/:id', controller: 'users', action: 'destroy'
+  #------------------------------
+
   root "movies#index"
 
   # Routes for the Actor resource:

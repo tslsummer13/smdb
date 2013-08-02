@@ -1,0 +1,21 @@
+<h1>Editing Vote #<%= @vote.id %></h1>
+
+
+<%= form_tag(vote_url(@vote), method: 'patch') do %>
+
+  <div>
+    <%= label_tag :user_id %><br />
+    <%= select_tag :user_id, options_from_collection_for_select(User.all, :id, :name) %>
+  </div>
+
+  <div>
+    <%= label_tag :movie_id %><br />
+    <%= select_tag :movie_id, options_from_collection_for_select(Movie.all, :id, :title) %>
+  </div>
+
+
+  <div>
+    <%= submit_tag "Update Vote" %>
+  </div>
+
+<% end %>

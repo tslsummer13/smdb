@@ -1,4 +1,7 @@
 class Movie < ActiveRecord::Base
+  has_many :votes
+  has_many :users, :through => :votes
+
   # belongs to director
 
   # The hand-written way
