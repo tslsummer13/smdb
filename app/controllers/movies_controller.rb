@@ -1,8 +1,7 @@
 class MoviesController < ApplicationController
 
   def index
-    @page_number = params[:page].to_i
-    @movies = Movie.order("title").offset((@page_number - 1) * 10).limit(10)
+    @movies = Movie.order("title").offset(10).limit(10)
   end
 
   def show
