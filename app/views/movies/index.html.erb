@@ -1,6 +1,4 @@
-<h1>Movies</h1>
-
-<p><%= link_to 'Add a New Movie', new_movie_url, :class => "btn btn-primary btn-large" %></p>
+<h1>Movies <%= link_to '<i class="icon-plus"></i>&nbsp;&nbsp;&nbsp;<i class="icon-film"></i>'.html_safe, new_movie_url, :class => "btn btn-primary btn-large" %></h1>
 
 <table class="table table-striped table-hover">
   <thead>
@@ -13,7 +11,6 @@
       <th>Director</th>
       <th></th>
       <th></th>
-      <th></th>
     </tr>
   </thead>
 
@@ -24,12 +21,11 @@
       <td><%= movie.year %></td>
       <td><%= movie.duration %></td>
       <td><%= truncate movie.description %></td>
-      <td><%= image_tag movie.image_url, width: 100 %></td>
+      <td><%= link_to (image_tag movie.image_url, width: 100), movie_url(movie.id) %></td>
       <td><%= link_to movie.director.name, director_url(movie.director.id) %></td>
 
-      <td><%= link_to 'Show', movie_url(movie), :class => "btn btn-inverse" %></td>
-      <td><%= link_to 'Edit', edit_movie_url(movie), :class => "btn btn-warning" %></td>
-      <td><%= link_to 'Destroy', movie_url(movie), :class => "btn btn-danger", method: 'delete', data: { confirm: "Do you really want to delete this movie?" } %></td>
+      <td><%= link_to '<i class="icon-edit"></i>'.html_safe, edit_movie_url(movie), :class => "btn btn-warning" %></td>
+      <td><%= link_to '<i class="icon-trash"></i>'.html_safe, movie_url(movie), :class => "btn btn-danger", method: 'delete', data: { confirm: "Do you really want to delete this movie?" } %></td>
 
     </tr>
   <% end %>
