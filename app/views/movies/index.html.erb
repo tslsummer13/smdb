@@ -30,11 +30,9 @@
       <td>
         <%= form_tag votes_url, :class => "form-horizontal" do %>
           <%= hidden_field_tag :movie_id, movie.id %>
+          <%= hidden_field_tag :user_id, current_user.id %>
 
-          <%= label_tag :user_id %>
-          <%= select_tag :user_id, options_from_collection_for_select(User.all, :id, :name) %>
-
-          <%= submit_tag "Create Vote", :class => "btn btn-success" %>
+          <%= button_tag '<i class="icon-thumbs-up"></i>'.html_safe, :class => "btn btn-success" %>
         <% end %>
       </td>
       <td><%= link_to '<i class="icon-edit"></i>'.html_safe, edit_movie_url(movie), :class => "btn btn-warning" %></td>
