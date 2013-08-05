@@ -40,8 +40,12 @@
   </div>
 
   <div class="container">
-
-    User ID: <%= session[:user_id] %>
+    <p>
+      <!-- Make this look nicer. Display the user's email address. -->
+      Signed in as <%= session[:user_id] %>.
+      <!-- Make this sign out link work. -->
+      <%= link_to "Sign Out", session_url, :method => 'delete' %>
+    </p>
 
     <% flash.each do |name, msg| %>
       <div class="alert alert-<%= name == :notice ? "success" : "error" %>">
