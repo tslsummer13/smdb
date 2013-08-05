@@ -16,9 +16,11 @@ class UsersController < ApplicationController
     @user = User.new
     @user.name = params[:name]
     @user.email = params[:email]
-    
+
     if @user.save
-      redirect_to users_url
+      reset_session
+      session[:user_id] = @user.id
+      redirect_to root_url, notice: "Signed up successfully."
     else
       render 'new'
     end
@@ -32,7 +34,7 @@ class UsersController < ApplicationController
     @user = User.find_by_id(params[:id])
     @user.name = params[:name]
     @user.email = params[:email]
-    
+
     if @user.save
       redirect_to users_url
     else
