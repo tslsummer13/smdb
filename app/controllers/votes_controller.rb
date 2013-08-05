@@ -16,7 +16,7 @@ class VotesController < ApplicationController
     @vote = Vote.new
     @vote.user_id = params[:user_id]
     @vote.movie_id = params[:movie_id]
-    
+
     if @vote.save
       redirect_to votes_url
     else
@@ -32,7 +32,7 @@ class VotesController < ApplicationController
     @vote = Vote.find_by_id(params[:id])
     @vote.user_id = params[:user_id]
     @vote.movie_id = params[:movie_id]
-    
+
     if @vote.save
       redirect_to votes_url
     else

@@ -28,11 +28,13 @@
       <td><%= link_to movie.director.name, director_url(movie.director.id) %></td>
 
       <td>
-        <%= form_tag votes_url, :class => "form-horizontal" do %>
-          <%= hidden_field_tag :movie_id, movie.id %>
-          <%= hidden_field_tag :user_id, current_user.id %>
+        <% if current_user.present? %>
+          <%= form_tag votes_url, :class => "form-horizontal" do %>
+            <%= hidden_field_tag :movie_id, movie.id %>
+            <%= hidden_field_tag :user_id, current_user.id %>
 
-          <%= button_tag '<i class="icon-thumbs-up"></i>'.html_safe, :class => "btn btn-success" %>
+            <%= button_tag '<i class="icon-thumbs-up"></i>'.html_safe, :class => "btn btn-success" %>
+          <% end %>
         <% end %>
       </td>
       <td><%= link_to '<i class="icon-edit"></i>'.html_safe, edit_movie_url(movie), :class => "btn btn-warning" %></td>

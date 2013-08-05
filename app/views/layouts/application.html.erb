@@ -41,10 +41,12 @@
 
   <div class="container">
     <p>
-      <!-- Make this look nicer. Display the user's email address. -->
-      Signed in as <%= current_user.email %>.
-      <!-- Make this sign out link work. -->
-      <%= link_to "Sign Out", session_url, :method => 'delete' %>
+      <% if current_user.present? %>
+        Signed in as <%= current_user.email %>.
+        <%= link_to "Sign Out", session_url, :method => 'delete' %>
+      <% else %>
+        <%= link_to "Sign in to vote", new_session_url %>
+      <% end %>
     </p>
 
     <% flash.each do |name, msg| %>
