@@ -41,6 +41,8 @@
 
   <div class="container">
 
+    User ID: <%= session[:user_id] %>
+
     <% flash.each do |name, msg| %>
       <div class="alert alert-<%= name == :notice ? "success" : "error" %>">
         <a class="close" data-dismiss="alert">&times;</a>

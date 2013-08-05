@@ -1,4 +1,9 @@
 Smdb::Application.routes.draw do
+  # Routes for sign-in/out
+  get '/sessions/new' => 'sessions#new', :as => 'new_session'
+  post '/sessions' => 'sessions#create', :as => 'sessions'
+  delete '/sessions' => 'sessions#destroy', :as => 'session'
+
   # Routes for the Vote resource:
   # CREATE
   get '/votes/new', controller: 'votes', action: 'new', as: 'new_vote'
