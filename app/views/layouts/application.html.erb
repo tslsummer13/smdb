@@ -42,7 +42,7 @@
   <div class="container">
     <p>
       <!-- Make this look nicer. Display the user's email address. -->
-      Signed in as <%= session[:user_id] %>.
+      Signed in as <%= current_user.email %>.
       <!-- Make this sign out link work. -->
       <%= link_to "Sign Out", session_url, :method => 'delete' %>
     </p>
