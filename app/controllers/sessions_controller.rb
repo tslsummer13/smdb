@@ -22,6 +22,9 @@ class SessionsController < ApplicationController
 
   def destroy
     # Forget everything about the user
+    reset_session
     # Redirect back to home page
+    flash[:notice] = "Signed out successfully."
+    redirect_to root_url
   end
 end
