@@ -42,7 +42,26 @@ class VotesController < ApplicationController
 
   def destroy
     @vote = Vote.find_by_id(params[:id])
-    @vote.destroy
-    redirect_to votes_url
+
+    if @vote.user_id == current_user.id
+      @vote.destroy
+      redirect_to votes_url, :notice => "Vote destroyed."
+    else
+      redirect_to votes_url, :notice => "Nice try, Jeff."
+    end
   end
 end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
