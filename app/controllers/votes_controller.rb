@@ -1,7 +1,7 @@
 class VotesController < ApplicationController
 
   def index
-    @votes = current_user.votes
+    @votes = Vote.all
   end
 
   def show

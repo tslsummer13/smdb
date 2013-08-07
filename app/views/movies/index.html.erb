@@ -21,7 +21,7 @@
   <tbody>
   <% @movies.each do |movie| %>
     <tr>
-      <td>21</td>
+      <td><%= movie.votes.count %></td>
       <td><%= link_to movie.title, movie_url(movie.id) %></td>
       <td><%= movie.year %></td>
       <td><%= movie.duration %></td>
