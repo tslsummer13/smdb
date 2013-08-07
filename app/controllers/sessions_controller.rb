@@ -3,18 +3,12 @@ class SessionsController < ApplicationController
   end
 
   def create
-    # Find the user with the email address entered in the sign-in form
     user = User.find_by(:email => params[:email])
-    # If there is such a user,
-    if user.present?
-      # sign them in and
+    if user.present? && user.password == params[:password]
       session[:user_id] = user.id
-      # redirect to root url
       flash[:notice] = "Welcome back, #{user.name}."
       redirect_to root_url #, :notice => "Welcome back, #{user.name}."
-    # If not,
     else
-      # redirect back to sign-in form
       flash.now[:error] = "Something went wrong. Please try again."
       render 'new'
     end
