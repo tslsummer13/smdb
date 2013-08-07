@@ -1,12 +1,12 @@
 class VotesController < ApplicationController
   before_action :find_vote, :only => [:show, :edit, :update, :destroy]
-  before_action :user_owns_vote, :only => [:edit, :update, :destroy]
+  before_action :user_must_own_vote, :only => [:edit, :update, :destroy]
 
   def find_vote
     @vote = Vote.find_by_id(params[:id])
   end
 
-  def user_owns_vote
+  def user_must_own_vote
     if @vote.user != current_user
       redirect_to votes_url, :notice => "Not authorized for that."
     end
