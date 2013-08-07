@@ -15,7 +15,7 @@ class SessionsController < ApplicationController
     # If not,
     else
       # redirect back to sign-in form
-      flash[:error] = "Something went wrong. Please try again."
+      flash.now[:error] = "Something went wrong. Please try again."
       render 'new'
     end
   end
