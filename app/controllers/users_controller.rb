@@ -16,6 +16,7 @@ class UsersController < ApplicationController
     @user = User.new
     @user.name = params[:name]
     @user.email = params[:email]
+    @user.password = params[:password]
 
     if @user.save
       reset_session
@@ -34,6 +35,7 @@ class UsersController < ApplicationController
     @user = User.find_by_id(params[:id])
     @user.name = params[:name]
     @user.email = params[:email]
+    @user.password = params[:password]
 
     if @user.save
       redirect_to users_url

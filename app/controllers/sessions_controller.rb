@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id
       # redirect to root url
       flash[:notice] = "Welcome back, #{user.name}."
-      redirect_to root_url
+      redirect_to root_url #, :notice => "Welcome back, #{user.name}."
     # If not,
     else
       # redirect back to sign-in form
