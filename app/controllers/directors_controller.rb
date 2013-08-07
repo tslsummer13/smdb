@@ -1,11 +1,14 @@
 class DirectorsController < ApplicationController
+  before_action :find_director, :only => [:show, :edit, :update, :destroy]
+  def find_director
+    @director = Director.find_by_id(params[:id])
+  end
 
   def index
     @directors = Director.all
   end
 
   def show
-    @director = Director.find_by_id(params[:id])
   end
 
   def new
@@ -18,7 +21,7 @@ class DirectorsController < ApplicationController
     @director.dob = params[:dob]
     @director.image_url = params[:image_url]
     @director.bio = params[:bio]
-    
+
     if @director.save
       redirect_to directors_url
     else
@@ -27,16 +30,14 @@ class DirectorsController < ApplicationController
   end
 
   def edit
-    @director = Director.find_by_id(params[:id])
   end
 
   def update
-    @director = Director.find_by_id(params[:id])
     @director.name = params[:name]
     @director.dob = params[:dob]
     @director.image_url = params[:image_url]
     @director.bio = params[:bio]
-    
+
     if @director.save
       redirect_to directors_url
     else
@@ -45,7 +46,6 @@ class DirectorsController < ApplicationController
   end
 
   def destroy
-    @director = Director.find_by_id(params[:id])
     @director.destroy
     redirect_to directors_url
   end

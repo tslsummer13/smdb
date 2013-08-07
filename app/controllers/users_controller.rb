@@ -1,11 +1,14 @@
 class UsersController < ApplicationController
+  before_action :find_user, :only => [:show, :edit, :update, :destroy]
+  def find_user
+    @user = User.find_by_id(params[:id])
+  end
 
   def index
     @users = User.all
   end
 
   def show
-    @user = User.find_by_id(params[:id])
   end
 
   def new
@@ -29,11 +32,9 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find_by_id(params[:id])
   end
 
   def update
-    @user = User.find_by_id(params[:id])
     @user.name = params[:name]
     @user.email = params[:email]
     @user.password = params[:password]
@@ -47,7 +48,6 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    @user = User.find_by_id(params[:id])
     @user.destroy
     redirect_to users_url
   end
