@@ -1,7 +1,15 @@
 class UsersController < ApplicationController
   before_action :find_user, :only => [:show, :edit, :update, :destroy]
+  before_action :current_user_must_be_user, :only => [:edit, :update, :destroy]
+
   def find_user
     @user = User.find_by_id(params[:id])
+  end
+
+  def current_user_must_be_user
+    if current_user != @user
+      redirect_to users_url, :notice => "Nice try."
+    end
   end
 
   def index
