@@ -5,12 +5,12 @@
 
   <div>
     <%= label_tag :user_id %><br />
-    <%= select_tag :user_id, options_from_collection_for_select(User.all, :id, :name) %>
+    <%= select_tag :user_id, options_from_collection_for_select(User.all, :id, :name, @vote.user_id) %>
   </div>
 
   <div>
     <%= label_tag :movie_id %><br />
-    <%= select_tag :movie_id, options_from_collection_for_select(Movie.all, :id, :title) %>
+    <%= select_tag :movie_id, options_from_collection_for_select(Movie.all, :id, :title, @vote.movie_id) %>
   </div>
 
 

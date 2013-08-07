@@ -1,20 +1,35 @@
 class VotesController < ApplicationController
+  before_action :find_vote, :only => [:show, :edit, :update, :destroy]
+  before_action :user_owns_vote, :only => [:edit, :update, :destroy]
+
+  def find_vote
+    @vote = Vote.find_by_id(params[:id])
+  end
+
+  def user_owns_vote
+    if @vote.user != current_user
+      redirect_to votes_url, :notice => "Not authorized for that."
+    end
+  end
 
   def index
     @votes = Vote.all
   end
 
   def show
-    @vote = Vote.find_by_id(params[:id])
   end
 
   def new
     @vote = Vote.new
+    if current_user.blank?
+      redirect_to votes_url, :notice => "Please sign in to vote."
+      return
+    end
   end
 
   def create
     @vote = Vote.new
-    @vote.user_id = params[:user_id]
+    @vote.user_id = current_user.id
     @vote.movie_id = params[:movie_id]
 
     if @vote.save
@@ -25,11 +40,9 @@ class VotesController < ApplicationController
   end
 
   def edit
-    @vote = Vote.find_by_id(params[:id])
   end
 
   def update
-    @vote = Vote.find_by_id(params[:id])
     @vote.user_id = params[:user_id]
     @vote.movie_id = params[:movie_id]
 
@@ -41,14 +54,8 @@ class VotesController < ApplicationController
   end
 
   def destroy
-    @vote = Vote.find_by_id(params[:id])
-
-    if @vote.user_id == current_user.id
-      @vote.destroy
-      redirect_to votes_url, :notice => "Vote destroyed."
-    else
-      redirect_to votes_url, :notice => "Nice try, Jeff."
-    end
+    @vote.destroy
+    redirect_to votes_url, :notice => "Vote destroyed."
   end
 end
 
