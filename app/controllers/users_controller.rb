@@ -17,6 +17,7 @@ class UsersController < ApplicationController
     @user.name = params[:name]
     @user.email = params[:email]
     @user.password = params[:password]
+    @user.password_confirmation = params[:password_confirmation]
 
     if @user.save
       reset_session
@@ -36,6 +37,7 @@ class UsersController < ApplicationController
     @user.name = params[:name]
     @user.email = params[:email]
     @user.password = params[:password]
+    @user.password_confirmation = params[:password_confirmation]
 
     if @user.save
       redirect_to users_url
