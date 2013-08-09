@@ -7,5 +7,7 @@ class Movie < ActiveRecord::Base
 
   has_many :actors, :through => :roles
 
+  validates :title, :presence => true, :uniqueness => true
+  validates :year, :presence => true
 
 end

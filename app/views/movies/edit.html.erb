@@ -1,5 +1,6 @@
 <h1>Editing Movie #<%= @movie.id %></h1>
 
+<%= render 'error_messages' %>
 
 <%= form_tag(movie_url(@movie), method: 'patch') do %>
 
