@@ -2,40 +2,29 @@
 
 <%= render 'error_messages' %>
 
-<%= form_tag(movies_url, method: 'post') do %>
+<%= form_for(@movie) do |f| %>
+
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+
+  <%= f.label :year %>
+  <%= f.number_field :year %>
+
+  <%= f.label :duration %>
+  <%= f.number_field :duration %>
+
+  <%= f.label :description %>
+  <%= f.text_field :description %>
+
+  <%= f.label :image_url %>
+  <%= f.text_field :image_url %>
+
+  <%= f.label :director %><br />
+  <%= f.collection_select :director_id, Director.all, :id, :name %>
 
   <div>
-    <%= label_tag :title %><br />
-    <%= text_field_tag :title %>
-  </div>
-
-  <div>
-    <%= label_tag :year %><br />
-    <%= number_field_tag :year %>
-  </div>
-
-  <div>
-    <%= label_tag :duration %><br />
-    <%= number_field_tag :duration %>
-  </div>
-
-  <div>
-    <%= label_tag :description %><br />
-    <%= text_area_tag :description %>
-  </div>
-
-  <div>
-    <%= label_tag :image_url %><br />
-    <%= text_field_tag :image_url %>
-  </div>
-
-  <div>
-    <%= label_tag :director_id %><br />
-    <%= select_tag :director_id, options_from_collection_for_select(Director.all, :id, :name) %>
-  </div>
-
-
-  <div>
-    <%= submit_tag "Create Movie" %>
-  </div>
+  <%= f.submit %>
+</div>
 <% end %>
+
+

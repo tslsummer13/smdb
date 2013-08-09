@@ -29,13 +29,10 @@
     <%= text_field_tag :image_url, @movie.image_url %>
   </div>
 
-  <!-- TODO This should be a dropdown -->
   <div>
     <%= label_tag :director_id %><br />
     <%= select_tag :director_id, options_from_collection_for_select(Director.all, :id, :name) %>
   </div>
-
-  <!-- Todo There should be another dropdown for actor -->
 
   <div>
     <%= submit_tag "Update Movie" %>
