@@ -16,13 +16,14 @@ class MoviesController < ApplicationController
   end
 
   def create
+    #  Parameters: {"utf8"=>"✓", "authenticity_token"=>"rUcl+idVYqh6CXMlDgk7iHWKBAvE8O+f2MQE/p/M9BM=", "movie"=>{"title"=>"Fantastic Mr. Fox", "year"=>"", "duration"=>"", "description"=>"", "image_url"=>"", "director_id"=>"825"}, "commit"=>"Create Movie"}
     @movie = Movie.new
-    @movie.title = params[:title]
-    @movie.year = params[:year]
-    @movie.duration = params[:duration]
-    @movie.description = params[:description]
-    @movie.image_url = params[:image_url]
-    @movie.director_id = params[:director_id]
+    @movie.title = params[:movie][:title]
+    @movie.year = params[:movie][:year]
+    @movie.duration = params[:movie][:duration]
+    @movie.description = params[:movie][:description]
+    @movie.image_url = params[:movie][:image_url]
+    @movie.director_id = params[:movie][:director_id]
 
     if @movie.save
       redirect_to movies_url
