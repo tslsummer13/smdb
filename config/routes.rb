@@ -1,4 +1,6 @@
 Smdb::Application.routes.draw do
+  resources :reviews
+
   # Routes for sign-in/out
   get '/sessions/new' => 'sessions#new', :as => 'new_session'
   post '/sessions' => 'sessions#create', :as => 'sessions'

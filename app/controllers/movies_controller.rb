@@ -17,6 +17,8 @@ class MoviesController < ApplicationController
   end
 
   def show
+    @review = Review.new
+    @review.movie_id = @movie.id
   end
 
   def new

@@ -1,9 +1,28 @@
-<h1>Movie #<%= @movie.id %></h1>
+<h1><%= @movie.title %> (<%= @movie.reviews.average(:stars).to_s %> Stars)</h1>
 
-<p>
-  <b>Title:</b>
-  <%= @movie.title %>
-</p>
+<% if current_user.present? %>
+
+  <p><strong>Add Your Review</strong></p>
+  <%= form_for(@review) do |f| %>
+
+    <%= f.hidden_field :movie_id %>
+
+    <div><%= f.label :body, "What did you think?" %>
+        <%= f.text_area :body %>
+    </div>
+    <div><%= f.select :stars, [1,2,3,4,5] %></div>
+    <%= f.submit "Add My Review" %>
+  <% end %>
+
+<% end %>
+
+<h2>Reviews</h2>
+
+<% @movie.reviews.each do |review| %>
+  <p><%= review.user.name %> gave it <%= review.stars %> stars</p>
+  <p><%= review.body %></p>
+  <hr>
+<% end %>
 
 <%= form_tag votes_url, :class => "form-horizontal" do %>
   <%= hidden_field_tag :movie_id, @movie.id %>
