@@ -5,7 +5,14 @@ class MoviesController < ApplicationController
   end
 
   def index
-    @movies = Movie.order("title").page(params[:page]).per(10)
+    @sort_direction = params[:sort]
+
+    @movies = Movie.order("title #{@sort_direction}").page(params[:page]).per(10)
+    if @sort_direction == 'asc'
+      @sort_direction = 'desc'
+    else
+      @sort_direction = 'asc'
+    end
   end
 
   def show
