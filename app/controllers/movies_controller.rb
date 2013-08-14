@@ -5,12 +5,26 @@ class MoviesController < ApplicationController
     @movie = Movie.find_by_id(params[:id])
   end
 
+  #  SELECT ....
+  #  INSERT ....
+  #  DELETE ....
+  #  CREATE_TABLE ...
+  #  DROP_TABLE ...
+
+  "SELECT * FROM MOVIES WHERE TITLE = 'Apollo 13'; DROP_TABLE ACTORS;"
+
+
+
   def index
 
     @sort_direction = params[:sort] || 'asc'
 
+    # { "search_term" => "Apollo 13; DROP TABLE MOVIES;"}
     if params[:search_term].present?
-      @movies = Movie.where("title = '#{params[:search_term]}'").order("LOWER(title) #{@sort_direction}").page(params[:page]).per(10)
+      # SELECT * FROM MOVIES WHERE TITLE LIKE 'Apollo13'; DROP TABLE MOVIES'
+      @movies = Movie.where("title LIKE ?", "%#{params[:search_term]}%")
+      @movies = @movies.order("LOWER(title) #{@sort_direction}")
+      @movies = @movies.page(params[:page]).per(10)
     else
       @movies = Movie.order("LOWER(title) #{@sort_direction}").page(params[:page]).per(10)
     end
