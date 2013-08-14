@@ -1,5 +1,6 @@
 class MoviesController < ApplicationController
   before_action :find_movie, :only => [:show, :edit, :update, :destroy]
+
   def find_movie
     @movie = Movie.find_by_id(params[:id])
   end

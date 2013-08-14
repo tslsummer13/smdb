@@ -8,6 +8,7 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id
       redirect_to root_url, :notice => "Welcome back, #{user.name}."
     else
+      logger.info "Somebody tried to login with an email of #{params[:email]}"
       flash.now[:error] = "Something went wrong. Please try again."
       render 'new'
     end
