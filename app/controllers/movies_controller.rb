@@ -5,15 +5,6 @@ class MoviesController < ApplicationController
     @movie = Movie.find_by_id(params[:id])
   end
 
-  #  SELECT ....
-  #  INSERT ....
-  #  DELETE ....
-  #  CREATE_TABLE ...
-  #  DROP_TABLE ...
-
-  "SELECT * FROM MOVIES WHERE TITLE = 'Apollo 13'; DROP_TABLE ACTORS;"
-
-
 
   def index
 
@@ -26,7 +17,7 @@ class MoviesController < ApplicationController
       @movies = @movies.order("LOWER(title) #{@sort_direction}")
       @movies = @movies.page(params[:page]).per(10)
     else
-      @movies = Movie.order("LOWER(title) #{@sort_direction}").page(params[:page]).per(10)
+      @movies = Movie.order("vote_tally desc").page(params[:page]).per(10)
     end
 
     if @sort_direction == 'asc'

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130812152758) do
+ActiveRecord::Schema.define(version: 20130814163423) do
 
   create_table "actors", force: true do |t|
     t.string "name"
@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(version: 20130812152758) do
     t.text    "description"
     t.string  "image_url"
     t.integer "director_id"
+    t.integer "vote_tally",  default: 0
   end
 
   create_table "reviews", force: true do |t|

@@ -7,6 +7,13 @@ class Vote < ActiveRecord::Base
 
   validate :user_can_only_vote_5_times
 
+  after_create :update_movie_tally
+
+  def update_movie_tally
+    self.movie.vote_tally += 1
+    self.movie.save
+  end
+
   def user_can_only_vote_5_times
     if self.user.votes.count >= 5
       errors.add(:base, "You can't vote anymore.")
