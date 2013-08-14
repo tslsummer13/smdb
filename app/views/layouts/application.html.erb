@@ -33,9 +33,11 @@
             <li><%= link_to "Actors", actors_url %></li>
             <li><%= link_to "Votes", votes_url %></li>
             <li><%= link_to "Users", users_url %></li>
-       <!--      <form class="navbar-search pull-left">
-  <input type="text" class="search-query" placeholder="Search">
-</form> -->
+
+            <%= form_tag movies_url, method: 'get', class: 'navbar-search pull-left' do %>
+              <%= text_field_tag :search_term, "", class: 'search-query', placeholder: 'Search by Title..' %>
+            <% end %>
+
           </ul>
         </div>
       </div>

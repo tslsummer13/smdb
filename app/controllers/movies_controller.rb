@@ -8,7 +8,12 @@ class MoviesController < ApplicationController
   def index
 
     @sort_direction = params[:sort] || 'asc'
-    @movies = Movie.order("LOWER(title) #{@sort_direction}").page(params[:page]).per(10)
+
+    if params[:search_term].present?
+      @movies = Movie.where("title = '#{params[:search_term]}'").order("LOWER(title) #{@sort_direction}").page(params[:page]).per(10)
+    else
+      @movies = Movie.order("LOWER(title) #{@sort_direction}").page(params[:page]).per(10)
+    end
 
     if @sort_direction == 'asc'
       @sort_direction = 'desc'
