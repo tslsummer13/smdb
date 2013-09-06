@@ -7,7 +7,6 @@ class MoviesController < ApplicationController
 
 
   def index
-
     @sort_direction = params[:sort] || 'asc'
 
     # { "search_term" => "Apollo 13; DROP TABLE MOVIES;"}

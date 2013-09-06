@@ -2,13 +2,14 @@ require 'test_helper'
 
 class ReviewsControllerTest < ActionController::TestCase
   setup do
-    @review = reviews(:one)
+    @review = reviews(:zebra)
+    session[:user_id] = users(:jeff).id
   end
 
   test "should get index" do
     get :index
     assert_response :success
-    assert_not_nil assigns(:reviews)
+    assert_not_nil assigns(:reviews)   # @reviews = ...
   end
 
   test "should get new" do
@@ -18,10 +19,13 @@ class ReviewsControllerTest < ActionController::TestCase
 
   test "should create review" do
     assert_difference('Review.count') do
+      # u = User.create name: 'Jeff', email: 'jeff@example.com', password: 'hockey', password_confirmation: 'hockey'
+
       post :create, review: { body: @review.body, movie_id: @review.movie_id, stars: @review.stars, user_id: @review.user_id }
     end
-
-    assert_redirected_to review_path(assigns(:review))
+    new_review = assigns(:review)
+    assert_redirected_to movie_url(new_review.movie_id)
+    # assert_redirected_to review_path(assigns(:review))
   end
 
   test "should show review" do

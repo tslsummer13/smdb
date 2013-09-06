@@ -3,6 +3,10 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.0'
 
+gem 'quiet_assets', group: 'development'
+gem 'better_errors', group: 'development'
+gem 'binding_of_caller', group: 'development'
+
 # Helpful generators from The Starter League.
 gem 'starter_generators'
 

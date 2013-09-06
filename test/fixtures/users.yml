@@ -1,0 +1,5 @@
+jeff:
+  name: Jeff
+  email: jeff@example.com
+  password_digest: $2A$5ACBA
+
