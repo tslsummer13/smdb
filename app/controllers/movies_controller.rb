@@ -12,7 +12,7 @@ class MoviesController < ApplicationController
     # { "search_term" => "Apollo 13; DROP TABLE MOVIES;"}
     if params[:search_term].present?
       # SELECT * FROM MOVIES WHERE TITLE LIKE 'Apollo13'; DROP TABLE MOVIES'
-      @movies = Movie.where("title LIKE ?", "%#{params[:search_term]}%")
+      @movies = Movie.for_title(params[:search_term])
       @movies = @movies.order("LOWER(title) #{@sort_direction}")
       @movies = @movies.page(params[:page]).per(10)
     else
