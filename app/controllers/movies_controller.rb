@@ -7,16 +7,21 @@ class MoviesController < ApplicationController
 
 
   def index
-    @sort_direction = params[:sort] || 'asc'
 
-    # { "search_term" => "Apollo 13; DROP TABLE MOVIES;"}
-    if params[:search_term].present?
-      # SELECT * FROM MOVIES WHERE TITLE LIKE 'Apollo13'; DROP TABLE MOVIES'
-      @movies = Movie.for_title(params[:search_term])
-      @movies = @movies.order("LOWER(title) #{@sort_direction}")
-      @movies = @movies.page(params[:page]).per(10)
+    if params[:director_id].present?
+      @movies = Director.find(params[:director_id]).movies.page(params[:page]).per(10).order('title')
     else
-      @movies = Movie.order("vote_tally desc").page(params[:page]).per(10)
+      @sort_direction = params[:sort] || 'asc'
+
+      # { "search_term" => "Apollo 13; DROP TABLE MOVIES;"}
+      if params[:search_term].present?
+        # SELECT * FROM MOVIES WHERE TITLE LIKE 'Apollo13'; DROP TABLE MOVIES'
+        @movies = Movie.for_title(params[:search_term])
+        @movies = @movies.order("LOWER(title) #{@sort_direction}")
+        @movies = @movies.page(params[:page]).per(10)
+      else
+        @movies = Movie.order("vote_tally desc").page(params[:page]).per(10)
+      end
     end
     @movies = @movies.includes(:director)
 

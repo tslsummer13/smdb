@@ -1,4 +1,16 @@
 Smdb::Application.routes.draw do
+
+  resources :movies
+
+  resources :directors do
+    resources :movies
+  end
+
+  # get "/directors/:director_id/movies" => 'movies#index', as: 'director_movies'
+  # get "/directors/:director_id/movies/:id" => 'movies#show', as: 'director_movie'
+  # get "/directors/:director_id/movies/new" => 'movies#show'
+  # post "/directors/:director_id/movies" => 'movies#show'
+
   resources :reviews
 
   # Routes for sign-in/out
@@ -13,7 +25,5 @@ Smdb::Application.routes.draw do
   resources :actors
   resources :users
   resources :votes
-  resources :movies
-  resources :directors
   resources :roles
 end
