@@ -18,6 +18,7 @@ class MoviesController < ApplicationController
     else
       @movies = Movie.order("vote_tally desc").page(params[:page]).per(10)
     end
+    @movies = @movies.includes(:director)
 
     if @sort_direction == 'asc'
       @sort_direction = 'desc'
