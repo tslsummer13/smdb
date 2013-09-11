@@ -1,0 +1,14 @@
+%h1
+  Movies
+  = link_to new_movie_url, :class => "btn btn-primary btn-large" do
+    %i.icon-plus
+    &nbsp;&nbsp;&nbsp;
+    %i.icon-film
+
+= paginate @movies
+
+%table.table.table-striped.table-hover
+  = render 'headers'
+
+  %tbody
+    = render @movies
